@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<div class="container text-center mt-4">
+    <div class='container mb-3 py-4 w-75 bg-light'>
+        <h1> <%= blog.title %> </h1>
+        <img class="col-11" src=" <%= blog.image %> ">
+        <h6 class="font-weight-lighter text-left pl-5 mt-3 mb-0">by <span class="font-weight-bold"><em><%= blog.author.username %></em></span> (<%= blog.date.toDateString() %>) </h5>
+        <p class="text-left px-5"> <%= blog.content %></p>
+        <div>
+            <a href="/blog"><span class="btn btn-outline-primary d-inline">back to the blog</span></a>
+            <% if (currentUser && blog.author.id == currentUser.id) { %>
+                <form class="d-inline" action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                </form>
+                <a href="/blog/<%=blog._id%>/edit" class="btn btn-outline-warning d-inline">Edit</a>
+            <% }; %>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <div class='container mb-3 py-4 w-75 bg-light'>
+        <h2>Comments</h2>
+        <% blog.Comments.forEach(function(comment) { %>
+            <hr>
+            <% if (currentUser && currentUser.id == comment.author.id) { %>
+                <a href="/blog/<%= blog._id %>/comment/<%= comment._id %>/edit" class="badge badge-warning float-right ml-2">edit</a>
+                <form action="/blog/<%= blog._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                    <button class="btn badge badge-danger float-right">delete</button>
+                </form>
+            <% }; %>
+            <h6 class="px-5 mt-0 mb-2"> <strong><%= comment.author.username %></strong> (<%= comment.date.toDateString() %>) </h6>
+            <p class="px-5 mb-0"><%= comment.content %></p>
+        <% }); %>
+        <div class="text-center mt-3">
+            <hr>
+            <a href="/blog/<%=blog._id%>/comment/new" class="btn btn-outline-info d-inline">New comment</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

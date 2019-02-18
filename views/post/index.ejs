@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+<div class="container text-center mt-4">
+    <% blogs.forEach(function(blog){ %>
+        <div class='container-fluid mb-3 py-4 col-12 col-lg-9 bg-light'>
+            <h2> <%= blog.title %> </h2>
+            <img class="col-11" src=" <%= blog.image %> ">
+            <h6 class="font-weight-lighter text-left pl-5 mt-3 mb-0"> by <span class="font-weight-bold"><em><%= blog.author.username %></em></span> (<%= blog.date.toDateString() %>) </h6>
+            <p class="text-left px-5"> <%= blog.content.substring(0, 100) %>...</p><a href="/blog/<%= blog._id %>"><span class="btn btn-primary btn-sm">Read More</span></a>
+        </div>
+    <% }); %>
+</div>
+
+
+<% include ../partials/footer %>
