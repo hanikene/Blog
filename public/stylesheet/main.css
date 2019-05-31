@@ -1,32 +1,66 @@
 body {
-	background: linear-gradient(0.51turn, #fff, #B4DBDA 90%);
+  background: linear-gradient(0.51turn, #fff, #b4dbda 90%);
 }
 
-.position-relative {
-    position: relative;
-    height: 80%;
+#main-container {
+  height: 80%;
+  width: 100%;
+  margin: 0;
 }
 
-.position-absolute {
-    position: absolute;
-    top: 30%;
-    text-align: center;
-    width: 100%;
+#text-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
-    font-size: 8em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    color: #333;
+  font-size: 8em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: translate(0px, 10%);
+  text-shadow: 0 0 50px rgba(0, 0, 0, 0.65);
+  transition: color 0.5s;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 h1:hover {
-    color: #666;
-    transition: all 0.5s;
+  color: #e2e2e2;
 }
 
+#video-container {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  z-index: -2;
+  height: calc(100% - 56px);
+  width: 100%;
+  overflow: hidden;
+}
+
+#video-container video {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#shadow {
+  position: absolute;
+  left: 0;
+  top: 56px;
+  height: calc(100% - 56px);
+  width: 100%;
+  background-color: rgba(100, 100, 150, 0.85);
+  z-index: -1;
+  box-shadow: inset 100px 0 100px rgba(0, 0, 0, 0.15),
+    inset -100px 0 100px rgba(0, 0, 0, 0.15),
+    inset 0 100px 100px rgba(0, 0, 0, 0.15),
+    inset 0 -100px 100px rgba(0, 0, 0, 0.15);
+}
