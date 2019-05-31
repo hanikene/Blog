@@ -2,6 +2,15 @@ body {
   background: linear-gradient(0.51turn, #fff, #b4dbda 90%);
 }
 
+body,
+html {
+  height: 100%;
+}
+
+nav {
+  z-index: 2;
+}
+
 #main-container {
   height: 80%;
   width: 100%;
@@ -9,15 +18,23 @@ body {
 }
 
 #text-container {
+  position: absolute;
+  left: 0;
+  top: 0;
   height: 100%;
   width: 100%;
+}
+
+#text-container div {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
-  font-size: 8em;
+  font-size: 7.5em;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   color: #fff;
